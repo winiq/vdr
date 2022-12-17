@@ -286,6 +286,12 @@ protected:
   virtual void CloseDvr(void);
   virtual bool GetTSPacket(uchar *&Data);
   virtual void DetachAllReceivers(void);
+// Power saving facilities
+
+protected:
+  virtual bool IsPoweredDown(void);
+  virtual void PowerDown(bool On);
+  virtual bool SupportsPowerDown() {return true;}
   };
 
 // A plugin that implements a DVB device derived from cDvbDevice needs to create

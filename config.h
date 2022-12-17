@@ -19,6 +19,7 @@
 #include "i18n.h"
 #include "font.h"
 #include "tools.h"
+#include <limits.h>
 
 // VDR's own version number:
 
@@ -280,6 +281,9 @@ public:
   int PositionerSpeed;
   int PositionerSwing;
   int PositionerLastLon;
+  int PowerdownEnabled;
+  int PowerdownTimeoutM;
+  int PowerdownWakeupH;
   int SetSystemTime;
   int TimeSource;
   int TimeTransponder;
@@ -366,6 +370,7 @@ public:
   int ChannelsWrap;
   int ShowChannelNamesWithSource;
   int EmergencyExit;
+  int EPGScanType;
   int __EndData__;
   cString InitialChannel;
   cString DeviceBondings;

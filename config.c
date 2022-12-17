@@ -395,6 +395,9 @@ cSetup::cSetup(void)
   PositionerSpeed = 15;
   PositionerSwing = 650;
   PositionerLastLon = 0;
+  PowerdownEnabled = 0;
+  PowerdownTimeoutM = 15;
+  PowerdownWakeupH = 4;
   SetSystemTime = 0;
   TimeSource = 0;
   TimeTransponder = 0;
@@ -497,6 +500,7 @@ cSetup::cSetup(void)
   ChannelsWrap = 0;
   ShowChannelNamesWithSource = 0;
   EmergencyExit = 1;
+  EPGScanType = 0;
 }
 
 cSetup& cSetup::operator= (const cSetup &s)
@@ -623,6 +627,9 @@ bool cSetup::Parse(const char *Name, const char *Value)
   else if (!strcasecmp(Name, "PositionerSpeed"))     PositionerSpeed    = atoi(Value);
   else if (!strcasecmp(Name, "PositionerSwing"))     PositionerSwing    = atoi(Value);
   else if (!strcasecmp(Name, "PositionerLastLon"))   PositionerLastLon  = atoi(Value);
+  else if (!strcasecmp(Name, "PowerdownEnabled"))    PowerdownEnabled   = atoi(Value);
+  else if (!strcasecmp(Name, "PowerdownTimeoutM"))   PowerdownTimeoutM  = atoi(Value);
+  else if (!strcasecmp(Name, "PowerdownWakeupH"))    PowerdownWakeupH   = atoi(Value);
   else if (!strcasecmp(Name, "SetSystemTime"))       SetSystemTime      = atoi(Value);
   else if (!strcasecmp(Name, "TimeSource"))          TimeSource         = cSource::FromString(Value);
   else if (!strcasecmp(Name, "TimeTransponder"))     TimeTransponder    = atoi(Value);
@@ -725,6 +732,7 @@ bool cSetup::Parse(const char *Name, const char *Value)
   else if (!strcasecmp(Name, "ChannelsWrap"))        ChannelsWrap       = atoi(Value);
   else if (!strcasecmp(Name, "ShowChannelNamesWithSource")) ShowChannelNamesWithSource = atoi(Value);
   else if (!strcasecmp(Name, "EmergencyExit"))       EmergencyExit      = atoi(Value);
+  else if (!strcasecmp(Name, "EPGScanType"))         EPGScanType        = atoi(Value);
   else if (!strcasecmp(Name, "LastReplayed"))        cReplayControl::SetRecording(Value);
   else
      return false;
@@ -755,6 +763,9 @@ bool cSetup::Save(void)
   Store("PositionerSpeed",    PositionerSpeed);
   Store("PositionerSwing",    PositionerSwing);
   Store("PositionerLastLon",  PositionerLastLon);
+  Store("PowerdownEnabled",   PowerdownEnabled);
+  Store("PowerdownTimeoutM",  PowerdownTimeoutM);
+  Store("PowerdownWakeupH",   PowerdownWakeupH);
   Store("SetSystemTime",      SetSystemTime);
   Store("TimeSource",         cSource::ToString(TimeSource));
   Store("TimeTransponder",    TimeTransponder);
@@ -857,6 +868,7 @@ bool cSetup::Save(void)
   Store("ChannelsWrap",       ChannelsWrap);
   Store("ShowChannelNamesWithSource", ShowChannelNamesWithSource);
   Store("EmergencyExit",      EmergencyExit);
+  Store("EPGScanType",        EPGScanType);
   Store("LastReplayed",       cReplayControl::LastReplayed());
 
   Sort();

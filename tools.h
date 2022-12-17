@@ -27,6 +27,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "thread.h"
+#include <limits.h>
 
 typedef unsigned char uchar;
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VDR 2.6.0\n"
 "Report-Msgid-Bugs-To: <vdr-bugs@tvdr.de>\n"
-"POT-Creation-Date: 2021-07-01 17:10+0200\n"
+"POT-Creation-Date: 2022-12-07 21:44+0100\n"
 "PO-Revision-Date: 2015-02-11 22:26+0100\n"
 "Last-Translator: Lucian Muresan <lucianm@users.sourceforge.net>\n"
 "Language-Team: Romanian <vdr@linuxtv.org>\n"
@@ -1169,6 +1169,15 @@ msgstr "Unghi maxim al actuatorului (grade)"
 
 msgid "Setup.LNB$Positioner speed (degrees/s)"
 msgstr "Viteza actuatorului (grade/s)"
+
+msgid "Setup.LNB$Enable power saving"
+msgstr ""
+
+msgid "Setup.LNB$Power down an idle device after (min)"
+msgstr ""
+
+msgid "Setup.LNB$Wake up from power-down after (h)"
+msgstr ""
 
 msgid "CAM reset"
 msgstr "Resetare CAM"

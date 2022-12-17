@@ -775,6 +775,8 @@ int main(int argc, char *argv[])
   CamResponsesLoad(AddDirectory(ConfigDirectory, "camresponses.conf"), true);
   DoneRecordingsPattern.Load(AddDirectory(CacheDirectory, "donerecs.data"));
 
+  isyslog("EPG scan type: %i", Setup.EPGScanType);
+
   if (!*cFont::GetFontFileName(Setup.FontOsd)) {
      const char *msg = "no fonts available - OSD will not show any text!";
      fprintf(stderr, "vdr: %s\n", msg);
@@ -1582,6 +1584,12 @@ int main(int argc, char *argv[])
            }
 
         ReportEpgBugFixStats();
+
+	for (int i = 0; i < cDevice::NumDevices(); i++) {
+           cDevice *d = cDevice::GetDevice(i);
+           if (d)
+              d->CheckIdle();
+           }
 
         // Main thread hooks of plugins:
         PluginManager.MainThreadHook();
